@@ -20,10 +20,14 @@ package org.bigbluebutton.common
 {
 	import mx.logging.ILogger;
 	import mx.logging.Log;
+	import mx.logging.LogEventLevel;
+	import mx.logging.targets.TraceTarget;
 	
 	public class LogUtil
 	{
 		public static const LOGGER:String = "BBBLOGGER";
+		
+		private static var ilogger:ILogger;   
 		
 		public static function debug(message:String):void
 		{
@@ -51,7 +55,21 @@ package org.bigbluebutton.common
 		}
 		
 		private static function get logger():ILogger {
-			return Log.getLogger(LOGGER);
+			if (ilogger == null) {
+			
+				var logTarget:TraceTarget = new TraceTarget(); 		
+				ilogger =  Log.getLogger(LOGGER);
+				
+				logTarget.level =  LogEventLevel.ALL;
+				logTarget.includeCategory = true;     
+				logTarget.includeDate = true;     
+				logTarget.includeLevel = true;     
+				logTarget.includeTime = true;    				
+				
+				logTarget.addLogger(ilogger);   
+				Log.addTarget(logTarget); 
+			}
+			return ilogger;
 		}
 	}
 }

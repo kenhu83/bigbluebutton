@@ -23,7 +23,6 @@ package org.bigbluebutton.main.model.modules
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
-	import org.bigbluebutton.common.LogUtil;
 	import org.bigbluebutton.core.vo.Config;
 	import org.bigbluebutton.core.vo.ConfigBuilder;
 	import org.bigbluebutton.main.events.BBBEvent;

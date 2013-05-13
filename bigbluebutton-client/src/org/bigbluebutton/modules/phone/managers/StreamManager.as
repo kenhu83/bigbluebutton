@@ -19,9 +19,8 @@
 
 package org.bigbluebutton.modules.phone.managers {
 	import com.asfusion.mate.events.Dispatcher;
-	import flash.events.ActivityEvent;
+	
 	import flash.events.AsyncErrorEvent;
-	import flash.events.IEventDispatcher;
 	import flash.events.NetStatusEvent;
 	import flash.events.StatusEvent;
 	import flash.media.Microphone;
@@ -30,6 +29,7 @@ package org.bigbluebutton.modules.phone.managers {
 	import flash.media.SoundCodec;
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
+	
 	import org.bigbluebutton.common.LogUtil;
 	import org.bigbluebutton.core.BBB;
 	import org.bigbluebutton.main.events.BBBEvent;
@@ -48,11 +48,13 @@ package org.bigbluebutton.modules.phone.managers {
 		private var audioCodec:String = "SPEEX";
 		private var dispatcher:Dispatcher;
 					
+		
 		public function StreamManager() {			
 			dispatcher = new Dispatcher();
 		}
 	
 		public function setConnection(connection:NetConnection):void {
+			LogUtil.debug("--------phone stream connection");
 			this.connection = connection;
 		}
 		
@@ -137,6 +139,7 @@ package org.bigbluebutton.modules.phone.managers {
 		
 		private function play(playStreamName:String):void {		
 			incomingStream.play(playStreamName);
+			
 		}
 		
 		private function publish(publishStreamName:String):void {
@@ -161,6 +164,7 @@ package org.bigbluebutton.modules.phone.managers {
 			incomingStream.bufferTime = 0;	
 			incomingStream.receiveAudio(true);
 			incomingStream.receiveVideo(false);
+		
 		}
 		
 		private function setupOutgoingStream():void {
@@ -236,5 +240,12 @@ package org.bigbluebutton.modules.phone.managers {
 		private function onMetadata(event:Object):void {
 	    	LogUtil.debug("Recieve ON METADATA from SIP");
 	    }	
+		
+		public function setVolume(volume:Number):void {
+			if (incomingStream != null) {
+				incomingStream.soundTransform.volume = volume;
+				LogUtil.debug("Phone Stream Setting Volume" + volume);
+			}
+		}
 	}
 }

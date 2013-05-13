@@ -17,11 +17,10 @@
 * 
 */
 package org.bigbluebutton.main.model {
-	import com.asfusion.mate.events.Dispatcher;
 	import flash.events.NetStatusEvent;
 	import flash.net.NetConnection;
+	
 	import org.bigbluebutton.common.LogUtil;
-	import org.bigbluebutton.main.events.PortTestEvent;
 	import org.bigbluebutton.main.model.modules.ModulesDispatcher;
 
 	public class PortTestProxy {

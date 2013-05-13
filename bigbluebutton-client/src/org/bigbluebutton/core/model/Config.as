@@ -1,6 +1,6 @@
 package org.bigbluebutton.core.model
 {
-	import org.bigbluebutton.common.LogUtil;
+	
 
 	public class Config
 	{

@@ -7,10 +7,9 @@ package org.bigbluebutton.modules.classyaudio.managers
 	import flash.utils.Timer;
 	
 	import org.bigbluebutton.common.LogUtil;
-	import org.bigbluebutton.core.managers.UserManager;
 	import org.bigbluebutton.common.events.ToolbarButtonEvent;
+	import org.bigbluebutton.core.managers.UserManager;
 	import org.bigbluebutton.main.events.MadePresenterEvent;
-	import org.bigbluebutton.main.model.User;
 	import org.bigbluebutton.modules.classyaudio.events.CallConnectedEvent;
 	import org.bigbluebutton.modules.classyaudio.events.PushToTalkEvent;
 	import org.bigbluebutton.modules.classyaudio.views.PushToTalkButton;

@@ -1,12 +1,12 @@
 package org.bigbluebutton.core
 {
+	import flash.system.Capabilities;
+	
 	import org.bigbluebutton.core.managers.ConfigManager2;
 	import org.bigbluebutton.core.managers.ConnectionManager;
 	import org.bigbluebutton.core.managers.StreamManager;
 	import org.bigbluebutton.core.managers.UserConfigManager;
-	import org.bigbluebutton.core.managers.UserManager;
 	import org.bigbluebutton.core.model.Session;
-	import flash.system.Capabilities;
 	
 	public class BBB {
 		private static var configManager:ConfigManager2 = null;

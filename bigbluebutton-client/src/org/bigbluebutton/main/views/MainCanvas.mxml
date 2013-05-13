@@ -24,10 +24,10 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.utils.ArrayUtil;
+			
 			import flexlib.mdi.containers.MDIWindow;
 			
-			import mx.controls.Alert;
-			import mx.utils.ArrayUtil;
 			import org.bigbluebutton.common.IBbbModuleWindow;
 			import org.bigbluebutton.common.LogUtil;
 

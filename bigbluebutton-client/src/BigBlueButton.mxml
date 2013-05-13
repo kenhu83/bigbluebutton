@@ -21,24 +21,24 @@
 -->
 
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
-	xmlns:views="org.bigbluebutton.main.views.*"
-	xmlns:maps="org.bigbluebutton.main.maps.*"
-	xmlns:mate="http://mate.asfusion.com/"
-	xmlns:m="library://melomel/2010"
-	pageTitle="BigBlueButton"
-	layout="absolute" preinitialize="init()"
-	preloader="org.bigbluebutton.main.model.BigBlueButtonPreloader">
+				xmlns:views="org.bigbluebutton.main.views.*"
+				xmlns:maps="org.bigbluebutton.main.maps.*"
+				xmlns:mate="http://mate.asfusion.com/"
+				xmlns:m="library://melomel/2010"
+				layout="absolute" pageTitle="BigBlueButton" preinitialize="init()"
+				preloader="org.bigbluebutton.main.model.BigBlueButtonPreloader">
 	
 	<mx:Script>
 		<![CDATA[
-			import com.asfusion.mate.events.Dispatcher;		
+			import com.asfusion.mate.events.Dispatcher;
+			
 			import mx.managers.HistoryManager;
-			import org.bigbluebutton.core.EventBroadcaster;
-			import org.bigbluebutton.core.managers.ConfigManager2;			
+			import mx.managers.IDragManager;
+			
 			import org.bigbluebutton.common.LogUtil;
 			import org.bigbluebutton.core.BBB;
+			import org.bigbluebutton.core.EventBroadcaster;
 			import org.bigbluebutton.main.events.BBBEvent;
-			import org.bigbluebutton.main.views.MainApplicationShell;
 			import org.bigbluebutton.util.i18n.ResourceUtil;
 			
 		private var langResources:ResourceUtil = ResourceUtil.getInstance();
@@ -50,7 +50,6 @@
 		 * http://gregjessup.com/flex-3-advanceddatagrid-cannot-convert-mxmanagersdragmanagerimpl-to-mxmanagersidragmanager/
 		 * http://butterfliesandbugs.wordpress.com/2007/10/25/workaround-for-error-when-loading-popups-from-modules/
 		 */
-		import mx.managers.IDragManager; 
 		private var iDragManager:IDragManager;  
 
 		/** another workaround - for this issue: https://bugs.adobe.com/jira/browse/SDK-13121*/
@@ -214,13 +213,14 @@
 	
 	<m:Melomel/>
 	
-	<maps:ApplicationEventMap />	
+	<maps:ApplicationEventMap/>	
 	<views:MainApplicationShell id="mainShell"/>	
 	
-	<mate:Listener type="{BBBEvent.LOGIN_EVENT}" method="handleLoginEvent"/>
-	<mate:Listener type="{BBBEvent.RECEIVED_PUBLIC_CHAT_MESSAGE_EVENT}" method="handleReceivedPublicChatMessageEvent"/>
-	<mate:Listener type="{BBBEvent.ADDED_LISTENER}" method="handleAddedListenerEvent"/>
-	<mate:Listener type="{BBBEvent.PRESENTATION_CONVERTED}" method="handlePresentationConversion"/>
-	<mate:Listener type="{BBBEvent.VIDEO_STARTED}" method="videoHasStarted"/>
+	<mate:Listener method="handleLoginEvent" type="{BBBEvent.LOGIN_EVENT}"/>
+	<mate:Listener method="handleReceivedPublicChatMessageEvent"
+				   type="{BBBEvent.RECEIVED_PUBLIC_CHAT_MESSAGE_EVENT}"/>
+	<mate:Listener method="handleAddedListenerEvent" type="{BBBEvent.ADDED_LISTENER}"/>
+	<mate:Listener method="handlePresentationConversion" type="{BBBEvent.PRESENTATION_CONVERTED}"/>
+	<mate:Listener method="videoHasStarted" type="{BBBEvent.VIDEO_STARTED}"/>
 	
 </mx:Application>

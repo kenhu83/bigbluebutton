@@ -18,26 +18,20 @@
 */
 package org.bigbluebutton.util.i18n
 {
-	import com.adobe.utils.StringUtil;
 	import com.asfusion.mate.events.Dispatcher;
 	
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
-	import flash.events.IOErrorEvent;
 	import flash.external.ExternalInterface;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
-	import flash.utils.Dictionary;
 	
-	import mx.controls.Alert;
 	import mx.events.ResourceEvent;
 	import mx.resources.IResourceManager;
 	import mx.resources.ResourceManager;
-	import mx.utils.StringUtil;
 	
 	import org.bigbluebutton.common.LogUtil;
-	import org.bigbluebutton.common.events.LocaleChangeEvent;
 	import org.bigbluebutton.main.events.AppVersionEvent;
 
 	public class ResourceUtil extends EventDispatcher {
@@ -47,7 +41,7 @@ package org.bigbluebutton.util.i18n
 		private var inited:Boolean = false;
 		
 		private static var BBB_RESOURCE_BUNDLE:String = 'bbbResources';
-		private static var MASTER_LOCALE:String = "en_US";
+		private static var MASTER_LOCALE:String = "zh_CN";
 		
 		[Bindable] public var localeCodes:Array = new Array();
 		[Bindable] public var localeNames:Array = new Array();
@@ -82,10 +76,11 @@ package org.bigbluebutton.util.i18n
 		private function handleComplete(e:Event):void{
 			parse(new XML(e.target.data));		
 									
-			preferredLocale = getDefaultLocale();
-			if (preferredLocale != MASTER_LOCALE) {
-				loadMasterLocale(MASTER_LOCALE);
-			}
+//			preferredLocale = getDefaultLocale();
+//			if (preferredLocale != MASTER_LOCALE) {
+//				loadMasterLocale(MASTER_LOCALE);
+//			}
+			preferredLocale = MASTER_LOCALE;
 			setPreferredLocale(preferredLocale);
 		}
 		

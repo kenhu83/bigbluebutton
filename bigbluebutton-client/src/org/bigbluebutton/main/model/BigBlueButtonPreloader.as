@@ -23,8 +23,6 @@ package org.bigbluebutton.main.model
 	import mx.events.RSLEvent;
 	import mx.preloaders.DownloadProgressBar;
 	
-	import org.bigbluebutton.util.i18n.ResourceUtil;
-	
 	public class BigBlueButtonPreloader extends DownloadProgressBar
 	{
 		public function BigBlueButtonPreloader()

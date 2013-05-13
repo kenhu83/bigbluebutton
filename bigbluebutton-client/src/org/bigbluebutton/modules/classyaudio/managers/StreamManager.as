@@ -23,8 +23,6 @@ package org.bigbluebutton.modules.classyaudio.managers
 	
 	import flash.events.ActivityEvent;
 	import flash.events.AsyncErrorEvent;
-	import flash.events.Event;
-	import flash.events.IEventDispatcher;
 	import flash.events.NetStatusEvent;
 	import flash.events.StatusEvent;
 	import flash.media.Microphone;
@@ -32,11 +30,7 @@ package org.bigbluebutton.modules.classyaudio.managers
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
 	
-	import mx.controls.Alert;
-	
 	import org.bigbluebutton.common.LogUtil;
-	import org.bigbluebutton.core.managers.UserManager;
-	import org.bigbluebutton.main.model.User;
 	import org.bigbluebutton.modules.classyaudio.events.MicMutedEvent;
 	import org.bigbluebutton.modules.classyaudio.events.PlayStreamStatusEvent;
 	
@@ -59,6 +53,7 @@ package org.bigbluebutton.modules.classyaudio.managers
 		}
 	
 		public function setConnection(connection:NetConnection):void {
+			LogUtil.debug("--------class audio stream connection");
 			this.connection = connection;
 		}
 		
@@ -112,6 +107,8 @@ package org.bigbluebutton.modules.classyaudio.managers
 		}
 		
 		public function mute():void {
+			LogUtil.debug("***** Muting the mic.");
+
 			/*if(outgoingStream != null) {
 				LogUtil.debug("***** Muting the mic.");
 				//outgoingStream.close();

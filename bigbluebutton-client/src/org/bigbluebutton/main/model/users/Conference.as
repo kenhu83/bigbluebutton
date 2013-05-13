@@ -21,7 +21,6 @@ package org.bigbluebutton.main.model.users {
 	
 	import org.bigbluebutton.common.LogUtil;
 	import org.bigbluebutton.common.Role;
-	import org.bigbluebutton.core.BBB;
 
 	public class Conference {		
 		private var _myUserid:Number;		

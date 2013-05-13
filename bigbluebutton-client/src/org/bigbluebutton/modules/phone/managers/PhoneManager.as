@@ -56,6 +56,7 @@ package org.bigbluebutton.modules.phone.managers {
 				phoneOptions.showButton = (vxml.@showButton.toString().toUpperCase() == "TRUE") ? true : false;
 				phoneOptions.autoJoin = (vxml.@autoJoin.toString().toUpperCase() == "TRUE") ? true : false;
 				phoneOptions.skipCheck = (vxml.@skipCheck.toString().toUpperCase() == "TRUE") ? true : false;
+				phoneOptions.defaultVolume = Number(vxml.@defaultVolume);
 			}
 			
 			if (phoneOptions.autoJoin) {
@@ -88,6 +89,11 @@ package org.bigbluebutton.modules.phone.managers {
 		private function setupConnection():void {
 			streamManager.setConnection(connectionManager.getConnection());
 		}
+		
+		public function setVolume(volume:Number):void {
+			LogUtil.debug("Phone Manager Setting Volume: " + volume);
+			streamManager.setVolume(volume);
+		}
 				
 		public function joinVoice(autoJoin:Boolean):void {
 			userHangup = false;
@@ -114,6 +120,7 @@ package org.bigbluebutton.modules.phone.managers {
 		public function callConnected(event:CallConnectedEvent):void {
 			setupConnection();
 			streamManager.callConnected(event.playStreamName, event.publishStreamName, event.codec);
+			this.setVolume(phoneOptions.defaultVolume);
 			onCall = true;
 			// We have joined the conference. Reset so that if and when we get disconnected, we
 			// can rejoin automatically.
